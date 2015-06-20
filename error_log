@@ -404,3 +404,6 @@
 [20-Jun-2015 01:53:39] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/php/54/usr/lib64/php/modules/imagick.so' - /usr/php/54/usr/lib64/php/modules/imagick.so: undefined symbol: zend_new_interned_string in Unknown on line 0
 [20-Jun-2015 01:53:39] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/php/54/usr/lib64/php/modules/http.so' - /usr/php/54/usr/lib64/php/modules/http.so: undefined symbol: zend_new_interned_string in Unknown on line 0
 [20-Jun-2015 01:53:39] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/php/54/usr/lib64/php/modules/oauth.so' - /usr/php/54/usr/lib64/php/modules/oauth.so: undefined symbol: zend_new_interned_string in Unknown on line 0
+[20-Jun-2015 15:50:10 Europe/Rome] PHP Fatal error:  Call to undefined method flag_node::setContext() in /home1/wordtosa/public_html/sites/all/modules/contrib/og_flag/og_flag.admin.inc on line 98
+[20-Jun-2015 15:50:11 Europe/Rome] PHP Fatal error:  Call to undefined method flag_node::setContext() in /home1/wordtosa/public_html/sites/all/modules/contrib/og_flag/og_flag.admin.inc on line 98
+[20-Jun-2015 15:50:34 Europe/Rome] PHP Fatal error:  Call to undefined method flag_node::setContext() in /home1/wordtosa/public_html/sites/all/modules/contrib/og_flag/og_flag.admin.inc on line 98
