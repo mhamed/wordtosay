@@ -1,0 +1,236 @@
+<?php
+
+/**
+ * @file
+ * Provides an API for opening content in a dialog.
+ */
+
+// AJAX commands.
+require_once dirname(__FILE__) . '/includes/dialog.commands.inc';
+
+/** 
+ * Implements hook_module_implements_alter(). 
+ */
+function dialog_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'library_alter') {
+    // Move hook_library_alter() to the end of the list in order to run after
+    // jquery_update.
+    // module_implements() iterates through $implementations with a foreach loop
+    // which PHP iterates in the order that the items were added, so to move an
+    // item to the end of the array, we remove it and then add it.
+    $group = $implementations ['dialog'];
+    unset($implementations ['dialog']);
+    $implementations ['dialog'] = $group;
+  }
+}
+
+/** 
+ * Implements hook_library(). 
+ */
+function dialog_library() {
+  $libraries['drupal.dialog'] = array(
+    'title' => 'Drupal Dialog',
+    'website' => 'http://www.drupal.org',
+    'version' => VERSION,
+    'js' => array(
+      drupal_get_path('module', 'dialog') . '/js/dialog/dialog.js' => array(
+        'weight' => 2,
+      ),
+      drupal_get_path('module', 'dialog') . '/js/dialog/dialog.position.js' => array(
+        'weight' => 2,
+      ),
+      drupal_get_path('module', 'dialog') . '/js/dialog/dialog.jquery-ui.js' => array(
+        'weight' => 2,
+      ),
+    ),
+    'css' => array(
+      drupal_get_path('module', 'dialog') . '/js/dialog/dialog.theme.css' => array(),
+    ),
+    'dependencies' => array(
+      array('system', 'jquery'),
+      array('system', 'ui.dialog'),
+      array('dialog', 'drupal.debounce'),
+      array('dialog', 'drupal.displace'),
+    ),
+  );
+
+  $libraries['drupal.dialog.ajax'] = array(
+    'title' => 'Drupal AJAX Dialog',
+    'website' => 'http://www.drupal.org',
+    'version' => VERSION,
+    'js' => array(
+      drupal_get_path('module', 'dialog') . '/js/dialog/dialog.ajax.js' => array(
+        'weight' => 2,
+      ),
+    ),
+    'dependencies' => array(
+      array('system', 'jquery'),
+      array('system', 'drupal.ajax'),
+      array('dialog', 'drupal.dialog'),
+    ),
+  );
+
+  $libraries['drupal.displace'] = array(
+    'title' => 'Drupal Displace',
+    'website' => 'http://www.drupal.org',
+    'version' => VERSION,
+    'js' => array(
+      drupal_get_path('module', 'dialog') . '/js/drupal/displace.js' => array(
+        'weight' => 2,
+      ),
+    ),
+    'dependencies' => array(
+      array('system', 'jquery'),
+    ),
+  );
+
+  $libraries['drupal.debounce'] = array(
+    'title' => 'Drupal Debounce',
+    'website' => 'http://www.drupal.org',
+    'version' => VERSION,
+    'js' => array(
+      drupal_get_path('module', 'dialog') . '/js/drupal/debounce.js' => array(
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  $libraries['drupal.editor.dialog'] = array(
+    'title' => 'Drupal Editor Dialog',
+    'website' => 'http://www.drupal.org',
+    'version' => VERSION,
+    'js' => array(
+      drupal_get_path('module', 'dialog') . '/js/editor/editor.dialog.js' => array(
+        'weight' => 2,
+      ),
+    ),
+    'dependencies' => array(
+      array('system', 'jquery'),
+      array('system', 'drupal.ajax'),
+      array('dialog', 'drupal.dialog'),
+    ),
+  );
+
+  // Register libraries on behalf of seven.theme.
+  if (drupal_theme_access('seven')) {
+    $libraries['seven.drupal.dialog'] = array(
+      'title' => 'Seven Drupal Dialog',
+      'website' => 'http://www.drupal.org',
+      'version' => VERSION,
+      'css' => array(
+        drupal_get_path('module', 'dialog') . '/themes/seven/css/components/dialog.theme.css' => array(),
+        drupal_get_path('module', 'dialog') . '/themes/seven/css/components/buttons.css' => array(),
+      ),
+    );
+
+    $libraries['seven.jquery.ui'] = array(
+      'title' => 'Seven jQuery UI',
+      'website' => 'http://www.drupal.org',
+      'version' => VERSION,
+      'css' => array(
+        drupal_get_path('module', 'dialog') . '/themes/seven/css/components/jquery.ui/theme.css' => array(
+          'weight' => -1,
+        ),
+      ),
+    );
+  }
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_library_alter().
+ */
+function dialog_library_alter(&$libraries, $module) {
+
+  if ($module == 'system' && isset($libraries['drupal.ajax'])) {
+    $path = 'misc/ajax.js';
+    unset($libraries['drupal.ajax']['js'][$path]);
+
+    $libraries['drupal.ajax']['js'][drupal_get_path('module', 'dialog') . '/misc/ajax.js'] = array('group' => JS_LIBRARY, 'weight' => 2);
+  }
+
+  // Alter libraries on behalf of seven.theme.
+  if (drupal_theme_access('seven')) {
+    // Replace the default jQuery UI theme CSS with custom CSS for seven.theme.
+    if ($module == 'system' && isset($libraries['ui'])) {
+      $path = 'misc/ui/jquery.ui.theme.css';
+      unset($libraries['ui']['css'][$path]);
+
+      $libraries['ui']['dependencies'][] = array('dialog', 'seven.jquery.ui');
+    }
+
+    // Replace the default dialog theme CSS with custom CSS for seven.theme.
+    if ($module == 'dialog' && isset($libraries['drupal.dialog'])) {
+      $path = drupal_get_path('module', 'dialog') . '/js/dialog/dialog.theme.css';
+      unset($libraries['drupal.dialog']['css'][$path]);
+
+      $libraries['drupal.dialog']['dependencies'][] = array('dialog', 'seven.drupal.dialog');
+    }
+  }
+}
+
+/**
+ * Detects if this is an AJAX HTTP request.
+ */
+function dialog_is_ajax() {
+  return strpos($_SERVER['HTTP_ACCEPT'], 'application/vnd.drupal-ajax') === 0;
+}
+
+/**
+ * Detects if this is a dialog HTTP request.
+ */
+function dialog_is_dialog() {
+  return strpos($_SERVER['HTTP_ACCEPT'], 'application/vnd.drupal-dialog') === 0;
+}
+
+/**
+ * Delivers the content of a page as a dialog.
+ */
+function ajax_deliver_dialog($page_callback_result) {
+  if (isset($page_callback_result['#title'])) {
+    $title = $page_callback_result['#title'];
+  }
+  else {
+    $title = drupal_get_title();
+  }
+  $html = drupal_render($page_callback_result);
+
+  $dialog_options = isset($_POST['dialogOptions']) ? $_POST['dialogOptions'] : array('modal' => TRUE);
+  if (isset($dialog_options['target'])) {
+    $selector = $dialog_options['target'];
+  }
+  else {
+    $selector = '#drupal-modal';
+    $dialog_options['modal'] = TRUE;
+  }
+
+  $commands = array();
+  $commands[] = dialog_command_open_dialog($selector, $title, $html, $dialog_options);
+  $return = array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+  ajax_deliver($return);
+}
+
+/**
+ * Implements hook_page_delivery_callback_alter().
+ *
+ * Enables the ability to display arbitrary pages as dialogs based on the
+ * HTTP request header.
+ */
+function dialog_page_delivery_callback_alter(&$delivery_callback, $page_output = array()) {
+  // For all ajax.js initiated requests, deliver as JSON.
+  if (dialog_is_ajax()) {
+    $delivery_callback = 'ajax_deliver';
+  }
+  // For links with the data-dialog attribute, deliver as dialog JSON.
+  elseif (dialog_is_dialog()) {
+    $delivery_callback = 'ajax_deliver_dialog';
+  }
+  // If the page response is a set of AJAX commands, deliver as JSON.
+  elseif (isset($page_output['#type']) && $page_output['#type'] === 'ajax') {
+    $delivery_callback = 'ajax_deliver';
+  }
+}
