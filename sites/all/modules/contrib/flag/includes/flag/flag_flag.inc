@@ -1278,7 +1278,8 @@ class flag_flag {
   function get_valid_actions() {
     $actions = module_invoke_all('action_info');
     foreach ($actions as $callback => $action) {
-      if ($action['type'] != $this->entity_type && !in_array('any', $action['triggers'])) {
+      /*if ($action['type'] != $this->entity_type && !in_array('any', $action['triggers'])) {*/
+        if ($action['type'] != $this->entity_type && (!isset($action['triggers'])||!in_array('any', $action['triggers']))) {
         unset($actions[$callback]);
       }
     }

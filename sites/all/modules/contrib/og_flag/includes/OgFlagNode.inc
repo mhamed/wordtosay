@@ -43,6 +43,22 @@ class OgFlagNode extends flag_node implements OgFlagEntityInterface {
   public $ogContext = FALSE;
 
   /**
+   * Overrides the base class implementation to set the OG context.
+   */
+  function get_entity_id($entity) {
+    $this->setContext($entity->nid);
+    return parent::get_entity_id($entity);
+  }
+
+  /**
+   * Overrides the base class implementation to set the OG context.
+   */
+  function flag($action, $entity_id, $account = NULL, $skip_permission_check = FALSE, $flagging = NULL) {
+    $this->setContext($entity_id);
+    return parent::flag($action, $entity_id, $account, $skip_permission_check, $flagging);
+  }
+
+  /**
    * Determines if the user has permission to use the flag in the current context.
    *
    * @param string $action
@@ -57,7 +73,11 @@ class OgFlagNode extends flag_node implements OgFlagEntityInterface {
    */
   public function user_access($action = 'flag', $account = NULL) {
     $access = parent::user_access($action, $account);
-    $access = og_flag_user_access_check($this, $access, $action, $account);
+
+    if ($access && $this->overridesApplied) {
+      $permission = "$action $this->name";
+      $access = og_user_access($this->ogContext['group_type'], $this->ogContext['gid'], $permission, $account);
+    }
 
     return $access;
   }
@@ -85,44 +105,6 @@ class OgFlagNode extends flag_node implements OgFlagEntityInterface {
         $this->defaultValues[$k] = $v;
       }
     }
-  }
-
-  /**
-   * Overrides the base class implementation in order to insert the OG context.
-   *
-   * @param object $entity
-   *   Entity that the flag applies to.
-   *
-   * @return int
-   *   The ID of the entity.
-   */
-  public function get_content_id($entity) {
-    $this->setContext($entity->nid);
-    return parent::get_content_id($entity);
-  }
-
-  /**
-   * Overrides the base class implementation in order to insert the OG context.
-   *
-   * @param string $action
-   *   The flag operation being performed.
-   *
-   * @param int $content_id
-   *   The ID of the content the flag operation is being performed on.
-   *
-   * @param object $account
-   *   The user account object performing the action.
-   *
-   * @param bool $skip_permission_check
-   *   Flag to bypass the permission checks.
-   *
-   * @return bool
-   *   FALSE if some error occurred (e.g., user has no permission, flag isn't
-   *   applicable to the item, etc.), TRUE otherwise.
-   */
-  public function flag($action, $content_id, $account = NULL, $skip_permission_check = FALSE) {
-    $this->setContext($content_id);
-    return parent::flag($action, $content_id, $account, $skip_permission_check);
   }
 
   /**

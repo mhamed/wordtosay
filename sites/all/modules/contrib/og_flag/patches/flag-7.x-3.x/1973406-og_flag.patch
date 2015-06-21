@@ -1,0 +1,19 @@
+diff --git a/flag.module b/flag.module
+index a1b45ea..a1234e9 100644
+--- a/flag.module
++++ b/flag.module
+@@ -1833,6 +1833,14 @@ function flag_get_flags($entity_type = NULL, $content_subtype = NULL, $account =
+     }
+   }
+ 
++  if (module_exists('og_flag')) {
++    foreach ($filtered_flags as $flag) {
++      if (method_exists($flag, 'setContext')) {
++        $flag->setContext();
++      }
++    }
++  }
++
+   return $filtered_flags;
+ }
+ 

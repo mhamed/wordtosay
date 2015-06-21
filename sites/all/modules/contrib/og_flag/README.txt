@@ -8,7 +8,7 @@ system wide flags.
 REQUIREMENTS
 ============
 Requires that the following modules be enabled:
-* Flag (2.x branch)
+* Flag (3.x branch)
 * Organic Groups (2.x branch)
 * Organic Groups Context (2.x branch)
 
@@ -17,7 +17,8 @@ INSTALLATION
 ============
 1. Copy the module to your sites/all/modules folder.
 2. Enable the Organic Group Flags (in the Flags group)
-
+3. Apply the patch patches/flag-7.x-3.x/1973406-og_flag.patch to the Flag module.
+   See http://drupal.org/node/1973406
 
 USE
 ===

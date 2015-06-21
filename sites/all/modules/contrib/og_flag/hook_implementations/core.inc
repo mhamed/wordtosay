@@ -35,3 +35,15 @@ function og_flag_menu() {
 
   return $items;
 }
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Stores the entity for the current request in a global variable
+ * so that we can tell which object is being processed by the flag
+ * module later on.
+ */
+//function og_flag_entity_view($entity, $type, $view_mode, $langcode) {
+//  $GLOBALS[OG_FLAG_CONTEXT_ENTITY] = $entity;
+//}
+

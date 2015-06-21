@@ -25,7 +25,7 @@ function og_flag_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      'content_type' => array(
+      'entity_type' => array(
         'description' => 'The flag type, such as one of "node", "comment", or "user".',
         'type' => 'varchar',
         'length' => '128',

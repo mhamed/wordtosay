@@ -11,11 +11,10 @@ dependencies[] = flag
 files[] = includes/OgFlagEntityInterface.inc
 files[] = includes/OgFlagNode.inc
 files[] = includes/OgFlagUser.inc
-files[] = includes/OgFlagComment.inc
 
-; Information added by drupal.org packaging script on 2013-07-24
-version = "7.x-2.0-beta1"
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-3.0-alpha1+4-dev"
 core = "7.x"
 project = "og_flag"
-datestamp = "1374639669"
+datestamp = "1380595431"
 

@@ -53,7 +53,7 @@ function og_flag_insert($flag) {
     ->fields(array(
       'gid' => $flag->gid,
       'fid' => $flag->fid,
-      'content_type' => $flag->content_type,
+      'entity_type' => $flag->entity_type,
       'name' => $flag->name,
       'title' => $flag->title,
       'global' => $flag->global,
@@ -180,7 +180,7 @@ function og_flag_load_overrides($gid, $flag) {
 function og_flag_create_context_from_entity_id($flag, $entity_id) {
   $og_context = FALSE;
 
-  $entity_type = $flag->content_type;
+  $entity_type = $flag->entity_type;
   $entity = entity_load($entity_type, array($entity_id));
   if (!empty($entity) && isset($entity[$entity_id])) {
     $og_context = og_flag_create_context_from_entity($entity[$entity_id], $entity_type);

@@ -43,12 +43,7 @@ function og_flag_og_permission() {
   $flags = flag_get_flags();
   // Provide flag and unflag permissions for each flag.
   foreach ($flags as $flag_name => $flag) {
-    $items["flag $flag_name"] = array(
-      'title' => t('Flag %flag_title', array('%flag_title' => $flag->title)),
-    );
-    $items["unflag $flag_name"] = array(
-      'title' => t('Unflag %flag_title', array('%flag_title' => $flag->title)),
-    );
+    $items += $flag->get_permissions();
   }
 
   return $items;

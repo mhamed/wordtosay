@@ -5,9 +5,9 @@
  */
 
 /**
- * Implements hook_flag_definitions_alter().
+ * Implements hook_flag_type_info_alter().
  */
-function og_flag_flag_definitions_alter(&$definitions) {
+function og_flag_flag_type_info_alter(&$definitions) {
   foreach ($definitions as $key => $flag) {
     if ($flag['handler'] == 'flag_node') {
       $definitions[$key]['handler'] = OG_FLAG_FLAG_NODE_TYPE;
@@ -15,10 +15,6 @@ function og_flag_flag_definitions_alter(&$definitions) {
     }
     if ($flag['handler'] == 'flag_user') {
       $definitions[$key]['handler'] = OG_FLAG_FLAG_USER_TYPE;
-      $definitions[$key]['module'] = 'og_flag';
-    }
-    if ($flag['handler'] == 'flag_comment') {
-      $definitions[$key]['handler'] = OG_FLAG_FLAG_COMMENT_TYPE;
       $definitions[$key]['module'] = 'og_flag';
     }
   }
@@ -35,5 +31,3 @@ function og_flag_flag_alter($flag) {
     $flag->OgFlagInit();
   }
 }
-
-
