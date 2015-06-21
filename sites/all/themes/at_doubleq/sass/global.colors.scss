@@ -1,0 +1,560 @@
+
+// _base.scss imports _custom.scss and other partials.
+@import "base";
+
+
+// =============================================================================
+// Base
+// =============================================================================
+
+html {
+  background-color: #b28539;
+}
+
+
+body {
+  color: #7e7e7e;
+  background-color: #fff;
+}
+
+
+// =============================================================================
+// Typography
+// =============================================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #636363;
+
+  a {
+    color: #636363;
+
+    &:hover,
+    &:focus {
+      color: #b68838;
+    }
+  }
+}
+
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+
+// =============================================================================
+// Forms
+// =============================================================================
+
+fieldset {
+  border: 1px solid #c0c0c0;
+}
+
+
+.filter-wrapper,
+button,
+input,
+select,
+textarea {
+  border: 1px solid $borderLightGrey;
+}
+
+
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  color: #f5efe5;
+  border-color: #b57300;
+  @include box-shadow(rgba(0,0,0,0.3) 0 2px 2px);
+  @include opacity(0.9);
+  background: #cf9e4a;
+  background: -moz-linear-gradient(top,  #cf9e4a 0%, #ac7f30 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cf9e4a), color-stop(100%,#ac7f30));
+  background: -webkit-linear-gradient(top,  #cf9e4a 0%,#ac7f30 100%);
+  background: -o-linear-gradient(top,  #cf9e4a 0%,#ac7f30 100%);
+  background: -ms-linear-gradient(top,  #cf9e4a 0%,#ac7f30 100%);
+  background: linear-gradient(to bottom,  #cf9e4a 0%,#ac7f30 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf9e4a', endColorstr='#ac7f30',GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#cf9e4a', endColorstr='#ac7f30')";
+
+  &:hover,
+  &:focus {
+    @include opacity(1);
+  }
+
+}
+
+
+button[disabled],
+input[disabled] {
+  color: #ccc;
+  border-color: #d5d5d5;
+  @include box-shadow(rgba(0,0,0,0.3) 0 2px 2px);
+  @include opacity(1);
+  background: #eeeeee;
+  background: -moz-linear-gradient(top,  #f2f2f2 0%, #eeeeee 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#eeeeee));
+  background: -webkit-linear-gradient(top,  #f2f2f2 0%,#eeeeee 100%);
+  background: -o-linear-gradient(top,  #f2f2f2 0%,#eeeeee 100%);
+  background: -ms-linear-gradient(top,  #f2f2f2 0%,#eeeeee 100%);
+  background: linear-gradient(to bottom,  #f2f2f2 0%,#eeeeee 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#eeeeee',GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f2f2f2', endColorstr='#eeeeee')";
+}
+
+
+
+// =============================================================================
+// Tables
+// =============================================================================
+
+table {
+  border-color: $borderLightGrey;
+}
+
+
+thead,
+tbody,
+tr,
+th,
+td {
+  border-color: $borderLightGrey;
+}
+
+
+thead tr {
+  color: #ffffff;
+  background: #bb8c3b;
+  background: -moz-linear-gradient(top,  #bb8c3b 0%, #c89640 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bb8c3b), color-stop(100%,#c89640));
+  background: -webkit-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: -o-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: -ms-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: linear-gradient(to bottom,  #bb8c3b 0%,#c89640 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bb8c3b', endColorstr='#c89640',GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb8c3b', endColorstr='#c89640')";
+}
+
+
+tr.odd {
+  background: #fff;
+}
+
+table {
+  tr.even,
+  tr:nth-child(2n+2) {
+    background: rgba(0,0,0,0.07);
+  }
+}
+
+
+.lt-ie8 tr {
+
+  &.even,
+  &.odd {
+
+    th,
+    td {
+      border-bottom: 1px solid $borderLightGrey; // IE doesn't display borders on table rows
+    }
+  }
+}
+
+
+// =============================================================================
+//   Page Styling
+// =============================================================================
+
+// Wrapper for the site name and slogan (.h-group)
+#name-and-slogan {
+  color: #fafafa;
+}
+
+
+// Site name (h1)
+#site-name {
+  margin: 0;
+
+  a {
+
+    color: #fafaff;
+
+    &:link,
+    &:visited {
+      color: #fafaff;
+    }
+
+    &:hover,
+    &:focus {
+      color: fafaff;
+    }
+  }
+}
+
+
+// Site slogan (h2)
+#site-slogan {
+  color: #fbfbfb;
+}
+
+
+
+//
+// Full Width Wrappers
+// These are used in the optional page--full-width-wrappers.tpl.php template.
+// All have internal .container classes. In the full width wrapper template the
+// .container classes set the width or max-width of the contained element - you
+// can style this but never add any width/margin/padding/borders etc to .container
+//
+
+#header-region-wrapper {
+  background: #3f392d;
+}
+
+#header-wrapper {
+  @include box-shadow(0 4px 2px -2px rgba(0,0,0,0.3));
+  background: #3f392d;
+  background: -moz-linear-gradient(top,  #3f392d 0%, #423c2f 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f392d), color-stop(100%,#423c2f));
+  background: -webkit-linear-gradient(top,  #3f392d 0%,#423c2f 100%);
+  background: -o-linear-gradient(top,  #3f392d 0%,#423c2f 100%);
+  background: -ms-linear-gradient(top,  #3f392d 0%,#423c2f 100%);
+  background: linear-gradient(to bottom,  #3f392d 0%,#423c2f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f392d', endColorstr='#423c2f',GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3f392d', endColorstr='#423c2f')";
+
+}
+
+
+// Wraps the secondary content/preface region
+#secondary-content-wrapper {
+  background: #bb8c3b;
+  background: -moz-linear-gradient(top,  #bb8c3b 0%, #c89640 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bb8c3b), color-stop(100%,#c89640));
+  background: -webkit-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: -o-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: -ms-linear-gradient(top,  #bb8c3b 0%,#c89640 100%);
+  background: linear-gradient(to bottom,  #bb8c3b 0%,#c89640 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bb8c3b', endColorstr='#c89640',GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb8c3b', endColorstr='#c89640')";
+  color: #fefefe;
+  text-shadow: 0 2px 2px #111111;
+
+  a {
+    color: #f5efee;
+  }
+
+  .block {
+    .article {
+      background: transparent;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #3f392c;
+    border: 0;
+    margin: 0;
+
+    a {
+      color: #3f392c;
+    }
+  }
+
+}
+
+
+// Footer wrapper
+#footer-wrapper {
+  border-top: 10px solid #3f392d;
+  background-color: #b28539;
+  color: #fdfdfd;
+
+  a {
+    color: #f9f9f9;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #3f392b;
+    border: 0;
+    margin: 0;
+
+    a {
+      color: #3f392b;
+    }
+  }
+}
+
+
+.node-unpublished,
+.comment-unpublished {
+
+  p.unpublished {
+    color: #fff;
+    color: rgba(239, 170, 170, 0.4);
+  }
+}
+
+
+// Otherwise these elements will appear below the "Unpublished" text
+.lt-ie8 {
+  .node-unpublished > *,
+  .comment-unpublished > * {
+    position: relative;
+  }
+}
+
+
+// =============================================================================
+// Navigation Styling - menus, breadcrumbs, tasks, action links, pager etc
+// =============================================================================
+
+a,
+.at-menu-toggle-button a {
+  color: #b68838;
+}
+
+
+// Menu toggle link
+.at-menu-toggle-button {
+  a {
+    text-decoration: none;
+  }
+}
+
+
+//
+// Primary, Secondary and Menu Bar region menus
+// Use one of the following id's for granular control:
+// #menu-bar (menu bar region)
+// #primary-menu (main menu)
+// #secondary-menu (secondary/user menu)
+// You can target all of these with .nav or div[id$="menu-bar"]
+//
+
+.nav {
+
+  ul.menu {
+  }
+
+  li, .menu li {
+  }
+
+  li a,
+  .menu li a {
+    color: #a0a0a0;
+
+    &:hover,
+    &:focus {
+      color: #fafafa;
+    }
+
+  }
+
+  ul {
+
+    &.menu {
+
+      li {
+      }
+    }
+  }
+
+  .block {
+  }
+}
+
+
+//
+// Superfish
+//
+ul.sf-menu {
+
+  a {
+
+    &:link,
+    &:visited {}
+  }
+
+  li {
+    &:hover,
+    &.sfHover {
+    }
+  }
+
+  ul {
+
+    li {
+      background-color: #27231c;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      @include opacity(.85);
+
+      &:hover,
+      &:focus {
+         @include opacity(.95);
+      }
+
+      &.last {
+        border-bottom: 0;
+      }
+    }
+
+  }
+
+  ul li a {
+    &:focus,
+    &:hover,
+    &:active {
+    }
+  }
+}
+
+
+// Skip Navigation
+#skip-link {
+
+  a {
+    background: #444;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+
+    &:link,
+    &:visited {
+      background: #444;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+    }
+  }
+}
+
+
+// Tabs
+#tasks {
+}
+
+
+ul.primary {
+  border-bottom-color:#ccc;
+
+  li {
+
+    a {
+      background-color: #f5f5f5;
+      border-color: #ccc;
+
+      &:hover,
+      &:focus {
+        background-color: #eee;
+        border-color: #ccc;
+      }
+    }
+  }
+
+  li.active a,
+  li.active a:hover,
+  li.active a:focus {
+    background-color: #fff;
+    border-bottom-color: #fff;
+  }
+}
+
+
+ul.secondary {
+  border-bottom: 1px solid #ccc;
+}
+
+
+
+// =============================================================================
+// Field Styling
+// =============================================================================
+
+
+//
+// Field types (Core)
+//
+
+// Image fields use the <figure> and <figcaption> elements from HTML5.
+.field-type-image {
+
+  figure {
+    border: 1px solid $borderLightGrey;
+    background-color: #ffffff;
+  }
+}
+
+
+// =============================================================================
+// Block Styling
+// =============================================================================
+
+
+// Block title
+.block-title {
+  border-bottom: 1px solid $borderLightGrey;
+}
+
+
+// =============================================================================
+// Node Styling
+// =============================================================================
+
+.node {
+
+  // View mode teaser
+  &.node-teaser {
+    background-color: #f7f7f7;
+    border: 1px solid $borderLightGrey;
+  }
+
+
+  // User picture
+  .user-picture img {
+    border: 1px solid $borderLightGrey;
+  }
+}
+
+
+// =============================================================================
+// Comment Styling - Comments, comment wrapper, comment form
+// =============================================================================
+
+
+// Wrapper for a single comment
+.comment {
+  // The picture of the comment author
+  .user-picture img {
+    border: 1px solid $borderLightGrey;
+  }
+}
+
+
+// =============================================================================
+// Misc overrides
+// ========================================================================== */
+
+.block-region {
+  color: #101010 !important;
+}

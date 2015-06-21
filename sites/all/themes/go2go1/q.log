@@ -1,0 +1,13 @@
+This is Omegak, Version 3.141592-1.23.2.3 (Web2C 7.5.6)
+ %&-line parsing enabled. (format=omega 2012.2.17)
+20 JUN 2015 15:19
+Copyright (c) 1994--2000 John Plaice and Yannis Haralambous
+**guard
+(/usr/share/texmf/tex/latex/tools/q.tex File ignored
+)
+! Emergency stop.
+<*> guard
+         
+*** (job aborted, no legal \end found)
+
+No pages of output.

@@ -425,3 +425,4 @@
 [20-Jun-2015 14:15:28 America/Denver] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
 [20-Jun-2015 14:15:33 America/Denver] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
 >>>>>>> registrationAffairs
+[21-Jun-2015 07:53:08 Europe/Rome] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32750815 bytes) in /home1/wordtosa/public_html/sites/all/modules/contrib/browscap/import.inc on line 101

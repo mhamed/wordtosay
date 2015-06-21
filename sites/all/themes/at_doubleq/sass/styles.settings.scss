@@ -1,0 +1,335 @@
+/**
+ * NOTICE: This is a commercial Drupal theme. Elements of this theme including this field
+ * are licensed under a standard commercial license which does not permit redistribution.
+ */
+@import "base";
+
+/* Image Alignment */
+.ia-l .field-type-image figure,
+.iat-l .field-type-image figure {
+  margin: 6px 15px 5px 0;
+}
+
+.ia-l .field-type-image figcaption,
+.iat-l .field-type-image figcaption {
+  margin: 5px 0;
+}
+
+.ia-r .field-type-image figure,
+.iat-r .field-type-image figure {
+  margin: 6px 0 5px 15px;
+}
+.ia-r .field-type-image figcaption,
+.iat-r .field-type-image figcaption {
+  margin: 5px 0;
+}
+
+.ia-c .field-type-image figure,
+.ia-n .field-type-image figure,
+.iat-c .field-type-image figure,
+.iat-n .field-type-image figure {
+  border: none;
+  padding: 10px 0;
+}
+
+.field-type-image.field-label-above {
+  margin-top: 0;
+}
+
+.field-type-image .field-label {
+  margin-bottom: 0.5em;
+}
+
+.field-type-image.field-label-inline .field-label {
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+
+/* Title shadows */
+.pts-l #page-title,
+.nts-l .article-title,
+.cts-l .comment-title,
+.bts-l .block-title{
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+.pts-d #page-title,
+.nts-d .article-title,
+.cts-d .comment-title,
+.bts-d .block-title{
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+.pts-w #page-title,
+.nts-w .article-title,
+.cts-w .comment-title,
+.bts-w .block-title{
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+
+
+/* Bullets */
+.mb-n ul.menu {
+  padding: 0;
+  margin: 0;
+}
+.mb-n ul.menu ul {
+  padding: 0;
+  margin-left: 1em;
+}
+.mb-n ul li.leaf,
+.mb-n ul li.collapsed,
+.mb-n ul li.expanded {
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+}
+.mb-ah ul.menu {
+  padding: 0 0 0 1.1em;
+}
+.mb-ah ul li.leaf,
+.mb-ah ul li.collapsed,
+.mb-ah ul li.expanded {
+  list-style-image: url(images/arrow-head.png);
+}
+.mb-ad ul.menu {
+  padding: 0 0 0 1.2em;
+}
+.mb-ad ul li.leaf,
+.mb-ad ul li.collapsed,
+.mb-ad ul li.expanded {
+  list-style-image: url(images/arrow-double.png);
+}
+.mb-ca ul.menu {
+  padding: 0 0 0 1.6em;
+}
+.mb-ca ul li.leaf,
+.mb-ca ul li.collapsed,
+.mb-ca ul li.expanded {
+  list-style-image: url(images/arrow-circle.png);
+}
+.mb-fa ul.menu {
+  padding: 0 0 0 1.6em;
+}
+.mb-fa ul li.leaf,
+.mb-fa ul li.collapsed,
+.mb-fa ul li.expanded {
+  list-style-image: url(images/arrow-fat.png);
+}
+.mb-sa ul.menu {
+  padding: 0 0 0 1.6em;
+}
+.mb-sa ul li.leaf,
+.mb-sa ul li.collapsed,
+.mb-sa ul li.expanded {
+  list-style-image: url(images/arrow-skinny.png);
+}
+
+
+/* List styles */
+.ulb-n {
+  .item-list ul,
+  article ul {
+    list-style: none;
+    
+    li {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+.ulb-disc {
+  .item-list ul,
+  article ul {
+    list-style: disc;
+  }
+}
+
+.ulb-circle {
+  .item-list ul,
+  article ul {
+    list-style: circle;
+  }
+}
+
+.ulb-square {
+  .item-list ul,
+  article ul {
+    list-style: square;
+  }
+}
+
+.ulb-tick {
+  .item-list ul,
+  article ul {
+    list-style-image: url(images/list-style-tick.png);
+  }
+}
+
+.ulb-plus {
+  .item-list ul,
+  article ul {
+    list-style-image: url(images/list-style-plus.png);
+  }
+}
+
+.ulb-cross {
+  .item-list ul,
+  article ul {
+    list-style-image: url(images/list-style-cross.png);
+  }
+}
+
+// Ordered List Bullets
+.olb-n {
+  .item-list ol,
+  article ol {
+    list-style: none;
+  }
+}
+
+.olb-decimal {
+  .item-list ol,
+  article ol {
+    list-style: decimal;
+  }
+}
+
+.olb-lower-alpha {
+  .item-list ol,
+  article ol {
+    list-style: lower-alpha;
+  }
+}
+
+.olb-upper-alpha {
+  .item-list ol,
+  article ol {
+    list-style: upper-alpha;
+  }
+}
+
+.olb-lower-roman {
+  .item-list ol,
+  article ol {
+    list-style: lower-roman;
+  }
+}
+
+.olb-upper-roman {
+  .item-list ol,
+  article ol {
+    list-style: upper-roman;
+  }
+}
+
+
+/* Featured backgrounds */
+body.bb-n .image-overlay {
+  background-image: none;
+}
+body.bb-b .image-overlay {
+  background-image: url(images/bubbles.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-hs .image-overlay {
+  background-image: url(images/hoz-stripe.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-dp .image-overlay {
+  background-image: url(images/diagonal-pattern.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-dlt .image-overlay {
+  background-image: url(images/diagonal-tight.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-dll .image-overlay {
+  background-image: url(images/diagonal-loose.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-sd .image-overlay {
+  background-image: url(images/dots-small.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+body.bb-bd .image-overlay {
+  background-image: url(images/dots-big.png);
+  background-position: 0 0;
+  background-repeat: repeat;
+  min-height: 40px;
+}
+
+
+/* Rounded corners */
+.rc-3 {
+  .field-type-image figure,
+  .node-teaser  {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+  }
+}
+
+.rc-6 {
+  .field-type-image figure,
+  .node-teaser  {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+  }
+}
+
+.rc-9 {
+  .field-type-image figure,
+  .node-teaser  {
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+  }
+}
+
+.rc-12 {
+  .field-type-image figure,
+  .node-teaser  {
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+  }
+}
+
+/* Main menu positions */
+.mmp-inline {
+  #nav-wrapper {
+    float: right;
+    margin-top: 35px;
+  }
+  #branding {
+    float: left;
+    margin-bottom: 15px;
+  }
+}
+
+.mmp-below-left {
+  #nav-wrapper {}
+  #branding {}
+}
+
+.mmp-below-right {
+  #nav-wrapper {
+    float: right;
+  }
+  #branding {}
+}
+
+.mmp-below-center {
+  #nav-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+
+  }
+  #branding {}
+}
