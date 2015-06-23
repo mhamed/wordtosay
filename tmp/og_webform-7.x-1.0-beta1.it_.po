@@ -1,0 +1,22 @@
+# Italian translation of Organic Groups Webform Integration (7.x-1.0-beta1)
+# Copyright (c) 2011 by the Italian translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Organic Groups Webform Integration (7.x-1.0-beta1)\n"
+"POT-Creation-Date: 2011-10-19 04:12+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Organic groups"
+msgstr "Organic groups"
+msgid "Access own webform submissions"
+msgstr "Accede ai propri inserimenti di webform"
+msgid "Edit own webform submissions"
+msgstr "Modifica i propri inserimenti di webform"
+msgid "Delete own webform submissions"
+msgstr "Elimina i propri inserimenti di webform"
