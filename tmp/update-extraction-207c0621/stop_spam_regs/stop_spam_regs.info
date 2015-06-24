@@ -1,0 +1,13 @@
+name = Stop Spam Registrations
+description = Module prevents user registrations from spam email domains.
+package = Spam control
+core = 7.x
+
+configure = admin/config/people/stop_spam_regs
+
+; Information added by drupal.org packaging script on 2013-07-26
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "stop_spam_regs"
+datestamp = "1374846683"
+
